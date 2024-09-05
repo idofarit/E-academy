@@ -1,33 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* clerk */
+.cl-cardBox {
+  background-color: #fff;
+}
+.cl-internal-1dauvpw {
+  display: none !important;
+}
+.cl-footerActionLink {
+  color: #9820bc;
+}
+
+.cl-formFieldInput {
+  height: 45px !important;
+  border: 0.1px #cccccc solid !important;
+}
+.cl-formButtonPrimary {
+  height: 45px !important;
+  color: #fff;
+  letter-spacing: 1px;
+  box-shadow: none !important;
+  background: #843ff3;
+}
+/* clerk */
+
+/* antd */
+.ant-tabs-nav {
+  position: static !important;
+}
+.ant-tabs-nav::before {
+  position: static !important;
+}
+.ant-tabs .ant-tabs-tab:hover {
+  color: #273297;
+}
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #273297;
+}
+.ant-tabs .ant-tabs-tab {
+  color: #f0f2f2;
+}
+.ant-tabs-content-holder {
+  color: #f0f2f2;
+}
+
+/* antd */
+
+/* loader */
+.loader {
+  border-top-color: #3498db;
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
+/* loader */
