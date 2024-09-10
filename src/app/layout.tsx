@@ -1,11 +1,11 @@
 import { connectMongoDB } from "@/config/database-config";
 import { ClerkProvider } from "@clerk/nextjs";
-import { App } from "antd";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import LayOutProvider from "./providers/layout-provider";
 import ThemeProvider from "./providers/themeProvider";
+import { App } from "antd";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +25,11 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${inter.className} bg-secondary`}>
-          <ThemeProvider>
-            <App>
+          <App>
+            <ThemeProvider>
               <LayOutProvider>{children}</LayOutProvider>
-            </App>
-          </ThemeProvider>
+            </ThemeProvider>
+          </App>
         </body>
       </html>
     </ClerkProvider>

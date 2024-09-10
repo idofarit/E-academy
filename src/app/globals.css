@@ -4,11 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-weight: 500;
+}
+
 * {
   font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
+  margin: 0;
+  padding: 0;
 }
 
 /* clerk */
@@ -54,6 +57,9 @@
 .ant-tabs-content-holder {
   color: #f0f2f2;
 }
+.ant-dropdown-menu {
+  background: #3498dbf1 !important;
+}
 
 /* antd */
 
@@ -82,3 +88,17 @@
   }
 }
 /* loader */
+
+/* independent css */
+.section-bg {
+  padding: 2.2rem 2rem;
+  border-radius: 50px;
+  background: #29b6e0;
+  box-shadow: 20px 20px 60px #239bbe, -20px -20px 60px #2fd1ff;
+}
+.lesson-bg {
+  padding: 1rem;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #48c8ef, #3ca8c9);
+  box-shadow: 20px 20px 60px #399fbe, -20px -20px 60px #4dd7ff;
+}

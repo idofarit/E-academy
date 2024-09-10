@@ -9,6 +9,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        "2xl": "1rem",
+      },
+      fontWeight: {
+        semi: "650",
+      },
       colors: {
         primary: "#287EE0",
         secondary: "#29B6E0",
@@ -16,6 +22,13 @@ const config: Config = {
         "btn-secondary": "#61C7F2",
         "form-btn-active": "#273297",
         "text-clr": "#F0F2F2",
+        "txt-heading": "#1E1E20",
+        "txt-content": "#3B3B3F",
+      },
+      backgroundColor: {
+        "btn-secondary": "#61C7F2",
+        "btn-active": "#273297",
+        "txt-content-bg": "#5076DF",
       },
     },
   },

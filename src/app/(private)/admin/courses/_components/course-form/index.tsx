@@ -11,6 +11,8 @@ function CourseForm() {
 
   const [description, setDescription] = useState("");
 
+  const [sections, setSections] = useState<any>([]);
+
   const [coverImage, setCoverImage] = useState<File | null>(null);
 
   const [promoVideo, setPromoVideo] = useState<File | null>(null);
@@ -45,7 +47,7 @@ function CourseForm() {
     {
       key: "3",
       label: "Curriculum",
-      children: <CurriculumTab />,
+      children: <CurriculumTab sections={sections} setSections={setSections} />,
     },
   ];
 

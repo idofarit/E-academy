@@ -1,6 +1,7 @@
+import ReactQuill from "react-quill-new";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import { Button } from "antd";
 
 function DescriptionTab({
   description,
@@ -9,13 +10,50 @@ function DescriptionTab({
   description: string;
   setDescription: (description: string) => void;
 }) {
+  const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
+
+  const quillModules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ align: [] }],
+      [{ color: [] }],
+      ["code-block"],
+      ["clean"],
+    ],
+  };
+
+  const quillFormats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+
+    "link",
+    "image",
+    "align",
+    "color",
+    "code-block",
+  ];
+
   return (
-    // <div>
-    //   <ReactQuill theme="snow" value={description} onChange={setDescription} />
-    // </div>
-    <div>
-      <h1>Description Tab</h1>
-    </div>
+    <>
+      <ReactQuill
+        theme="snow"
+        modules={quillModules}
+        formats={quillFormats}
+        value={description}
+        onChange={(newValue) => {
+          setDescription(newValue);
+          console.log(description);
+        }}
+      />
+    </>
   );
 }
 export default DescriptionTab;
