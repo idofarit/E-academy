@@ -102,3 +102,42 @@ body {
   background: linear-gradient(145deg, #48c8ef, #3ca8c9);
   box-shadow: 20px 20px 60px #399fbe, -20px -20px 60px #4dd7ff;
 }
+
+/* modal */
+.ant-modal-content {
+  background-color: #dbdbed !important;
+}
+.ant-modal-header {
+  background-color: #dbdbed !important;
+}
+.ant-upload {
+  border-radius: 5px;
+  background: #e0e0e0;
+  box-shadow: 2px 2px 5px #bebebe;
+}
+.ant-input {
+  margin-top: 0.3rem;
+  background: #d0d0dccf !important;
+}
+/* table */
+table {
+  margin-top: 2rem;
+}
+.ant-table-cell {
+  background-color: #3498db !important;
+  border: none !important;
+}
+.ant-table-cell button {
+  background: none !important;
+}
+.ant-pagination-item {
+  background: none !important;
+}
+
+/* video tag */
+video {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  object-fit: cover;
+}

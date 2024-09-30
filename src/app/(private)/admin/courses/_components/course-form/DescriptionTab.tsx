@@ -1,7 +1,5 @@
 import ReactQuill from "react-quill-new";
 import "react-quill/dist/quill.snow.css";
-import dynamic from "next/dynamic";
-import { Button } from "antd";
 
 function DescriptionTab({
   description,
@@ -10,8 +8,6 @@ function DescriptionTab({
   description: string;
   setDescription: (description: string) => void;
 }) {
-  const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
-
   const quillModules = {
     toolbar: [
       [{ header: [1, 2, 3, false] }],
@@ -33,7 +29,6 @@ function DescriptionTab({
     "strike",
     "blockquote",
     "list",
-
     "link",
     "image",
     "align",

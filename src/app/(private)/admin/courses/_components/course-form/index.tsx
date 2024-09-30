@@ -1,25 +1,46 @@
 "use client";
 
 import { Form, Tabs, TabsProps } from "antd";
-import { useState } from "react";
+import React, { useEffect } from "react";
 import BasicTab from "./BasicTab";
-import DescriptionTab from "./DescriptionTab";
 import CurriculumTab from "./CurriculumTab";
+import DescriptionTab from "./DescriptionTab";
+import mediaGlobalStore, { IMediaGlobalStore } from "@/store/media-store";
+import { getAllMedia } from "@/server-actions/media-library";
 
 function CourseForm() {
-  const [activeTab, setActiveTab] = useState("1");
+  const [activeTab, setActiveTab] = React.useState("1");
 
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = React.useState("");
 
-  const [sections, setSections] = useState<any>([]);
+  const [sections, setSections] = React.useState<any>([]);
 
-  const [coverImage, setCoverImage] = useState<File | null>(null);
+  const [coverImage, setCoverImage] = React.useState<File | null>(null);
 
-  const [promoVideo, setPromoVideo] = useState<File | null>(null);
+  const [promoVideo, setPromoVideo] = React.useState<File | null>(null);
+
+  const { setMedia } = mediaGlobalStore() as IMediaGlobalStore;
 
   const onFinish = (formValues: any) => {
     console.log(formValues);
   };
+
+  const getData = async () => {
+    try {
+      const response = await getAllMedia();
+      if (response.success) {
+        setMedia(response.data);
+      } else {
+        setMedia([]);
+      }
+    } catch (error: any) {
+      setMedia([]);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const items: TabsProps["items"] = [
     {
