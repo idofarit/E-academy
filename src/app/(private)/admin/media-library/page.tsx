@@ -71,7 +71,7 @@ function MediaLibrary() {
       dataIndex: "action",
       key: "action",
       render: (_text: string, record: IMedia) => (
-        <div className="flex gap-5">
+        <div className="flex gap-5 justify-center">
           <Button size="small" onClick={() => deleteMediaHanlder(record._id)}>
             <Trash2 size={14} />
           </Button>
@@ -101,7 +101,12 @@ function MediaLibrary() {
         </Button>
       </div>
 
-      <Table loading={loading} columns={columns} dataSource={media} />
+      <Table
+        rowKey={(record) => record._id}
+        loading={loading}
+        columns={columns}
+        dataSource={media}
+      />
 
       {showNewMediaUploadModal && (
         <MediaUploadModal

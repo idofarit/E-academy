@@ -18,3 +18,18 @@ export interface IMedia {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface ICourse {
+  _id: string;
+  title: string;
+  subTitle: string;
+  price: number;
+  category: string;
+  coverImage: string;
+  promoVideo: string;
+  description: string;
+  sections: any[];
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}

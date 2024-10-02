@@ -117,16 +117,28 @@ body {
 }
 .ant-input {
   margin-top: 0.3rem;
-  background: #d0d0dccf !important;
+  /* background: #d0d0dccf !important; */
 }
+
 /* table */
+
 table {
   margin-top: 2rem;
 }
 .ant-table-cell {
   background-color: #3498db !important;
   border: none !important;
+  padding: 20px 35px !important;
 }
+
+.ant-table-thead th {
+  text-align: center !important;
+}
+
+.ant-table-tbody {
+  text-align: center !important;
+}
+
 .ant-table-cell button {
   background: none !important;
 }

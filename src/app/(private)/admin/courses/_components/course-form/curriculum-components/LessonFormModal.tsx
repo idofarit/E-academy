@@ -1,7 +1,6 @@
-import { Edit2Icon, MoreVertical, Plus, Trash } from "lucide-react";
+import mediaGlobalStore, { IMediaGlobalStore } from "@/store/media-store";
 import { App, Button, Input, Modal, Select } from "antd";
 import { useEffect, useState } from "react";
-import mediaGlobalStore, { IMediaGlobalStore } from "@/store/media-store";
 
 function LessonFormModal({
   showLessonModal,
@@ -85,7 +84,7 @@ function LessonFormModal({
       {/* todo */}
       <div className="flex flex-col">
         <label htmlFor="media">Select video</label>
-        <Select>
+        <Select value={media} onChange={(value) => setMedia(value)}>
           {mediaStore.map((item: any) => (
             <Select.Option value={item.url} key={item._id}>
               {item.name}

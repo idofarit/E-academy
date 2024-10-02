@@ -1,4 +1,5 @@
 import { Button, Form, Input, Select, Upload, UploadFile } from "antd";
+import FormItem from "antd/es/form/FormItem";
 import { UploadIcon } from "lucide-react";
 import { useState } from "react";
 
@@ -17,39 +18,77 @@ function BasicTab({
   coverImage,
   setCoverImage,
 }: {
-  promoVideo: File | null;
+  promoVideo: File | null | string;
   setPromoVideo: (file: File) => void;
-  coverImage: File | null;
+  coverImage: File | null | string;
   setCoverImage: (file: File) => void;
 }) {
-  const [fileList, setFileList] = useState<UploadFile[]>([]);
+  let fileListOfCoverImage: any[] = [];
+  if (coverImage && typeof coverImage === "string") {
+    fileListOfCoverImage = [
+      {
+        uid: coverImage,
+        name: coverImage,
+        url: coverImage,
+        // type: "image/jpeg",
+      },
+    ];
+  }
+  if (coverImage && typeof coverImage === "object") {
+    fileListOfCoverImage = [
+      {
+        ...coverImage,
+        url: URL.createObjectURL(coverImage),
+      },
+    ];
+  }
+
+  let fileListOfPromoVideo: any[] = [];
+  if (promoVideo && typeof promoVideo === "string") {
+    fileListOfPromoVideo = [
+      {
+        uid: promoVideo,
+        name: "video.mp4",
+        url: promoVideo,
+      },
+    ];
+  }
+
+  if (promoVideo && typeof promoVideo === "object") {
+    fileListOfPromoVideo = [
+      {
+        ...promoVideo,
+        url: URL.createObjectURL(promoVideo),
+      },
+    ];
+  }
 
   return (
     <div className="flex flex-col ">
-      <Form.Item
+      <FormItem
         label="Title"
         name="title"
         rules={[{ required: true, message: "Please enter course" }]}
       >
         <Input placeholder="Enter course title" />
-      </Form.Item>
-      <Form.Item
+      </FormItem>
+      <FormItem
         label="Subtitle"
-        name="subtitle"
+        name="subTitle"
         rules={[{ required: true, message: "Please enter course subtitle" }]}
       >
         <Input.TextArea placeholder="Enter course subtitle title" />
-      </Form.Item>
+      </FormItem>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <Form.Item
+        <FormItem
           label="Price"
           name="price"
-          rules={[{ required: true, message: "Enter course price" }]}
+          rules={[{ required: true, message: "Please enter course price" }]}
         >
-          <Input placeholder="Enter course price" />
-        </Form.Item>
-        <Form.Item
+          <Input placeholder="Enter course price" type="number" />
+        </FormItem>
+        <FormItem
           label="Category"
           name="category"
           rules={[{ required: true, message: "Enter course price" }]}
@@ -61,15 +100,15 @@ function BasicTab({
               </Select.Option>
             ))}
           </Select>
-        </Form.Item>
+        </FormItem>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-        <Form.Item name="coverImage" label="Cover Image">
+        <FormItem name="coverImage" label="Cover Image">
           <Upload
             accept="image/*"
             listType="picture-card"
-            fileList={fileList}
+            fileList={fileListOfCoverImage}
             beforeUpload={(file) => {
               setCoverImage(file);
               return false;
@@ -77,12 +116,12 @@ function BasicTab({
           >
             <span className="text-sm">Upload an image</span>
           </Upload>
-        </Form.Item>
+        </FormItem>
 
-        <Form.Item name="promoVideo" label="Promo Video">
+        <FormItem name="promoVideo" label="Promo Video">
           <Upload
             accept="video/*"
-            fileList={fileList}
+            fileList={fileListOfPromoVideo}
             listType="picture-card"
             beforeUpload={(file) => {
               setPromoVideo(file);
@@ -91,7 +130,7 @@ function BasicTab({
           >
             <span className="text-sm">Upload a video</span>
           </Upload>
-        </Form.Item>
+        </FormItem>
       </div>
     </div>
   );
