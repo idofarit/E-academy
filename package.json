@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.3.7",
-    "antd": "^5.21.2",
+    "@stripe/react-stripe-js": "^2.8.0",
+    "@stripe/stripe-js": "^4.6.0",
+    "antd": "^5.20.0",
     "dayjs": "^1.11.13",
     "firebase": "^10.13.2",
     "html-to-react": "^1.7.0",
@@ -21,6 +23,7 @@
     "react-dom": "^18",
     "react-quill": "^2.0.0",
     "react-quill-new": "^3.3.0",
+    "stripe": "^17.1.0",
     "zustand": "^4.5.5"
   },
   "devDependencies": {

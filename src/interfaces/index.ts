@@ -33,3 +33,13 @@ export interface ICourse {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IEnrollment {
+  _id: string;
+  course: ICourse;
+  student: IUser;
+  amount: number;
+  paymentId: string;
+  createdAt: string;
+  updatedAt: string;
+}
