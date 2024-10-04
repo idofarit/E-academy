@@ -146,6 +146,28 @@ table {
   background: none !important;
 }
 
+/* collapse */
+.ant-collapse {
+  border: none !important;
+  background: none !important;
+}
+.ant-collapse-item {
+  border-bottom: none !important;
+  padding: 0.5rem;
+  font-weight: 600;
+}
+.ant-collapse-content {
+  border: none !important;
+  border-radius: 25px !important;
+  background: linear-gradient(145deg, #48c8ef, #3ca8c9);
+  box-shadow: 5px 5px 10px #399fbe, -10px -10px 55px #3ca8c9;
+  /* box-shadow: 20px 20px 60px #399fbe, -20px -20px 60px #4dd7ff; */
+}
+.ant-collapse-content-active {
+  background-color: #399fbe !important;
+  padding: 0 0.5rem;
+}
+
 /* video tag */
 video {
   height: 100%;

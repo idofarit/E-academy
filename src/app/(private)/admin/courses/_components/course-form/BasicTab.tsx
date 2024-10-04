@@ -1,7 +1,5 @@
-import { Button, Form, Input, Select, Upload, UploadFile } from "antd";
+import { Input, Select, Upload } from "antd";
 import FormItem from "antd/es/form/FormItem";
-import { UploadIcon } from "lucide-react";
-import { useState } from "react";
 
 const categories = [
   { label: "Web Development", value: "web-development" },
@@ -30,7 +28,7 @@ function BasicTab({
         uid: coverImage,
         name: coverImage,
         url: coverImage,
-        // type: "image/jpeg",
+        type: "image/jpeg",
       },
     ];
   }

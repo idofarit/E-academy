@@ -20,7 +20,7 @@ export const createCourse = async (data: any) => {
   }
 };
 
-export const getAllCourses = async () => {
+export const getAllCourses = async (searchParams: any) => {
   try {
     // let filtersObj = {};
     // if (searchParams.category) {
