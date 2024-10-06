@@ -7,24 +7,22 @@ import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import usersGlobalStore, { IUserGlobalStore } from "@/store/user-store";
-import { useUser } from "@clerk/nextjs";
-import { revalidatePath } from "next/cache";
 
 function LayOutProvider({ children }: { children: React.ReactNode }) {
-  const [loading, setLoading] = React.useState(true);
+  const pathName = usePathname();
+
   const { setCurrentUserData, currentUserData }: IUserGlobalStore =
     usersGlobalStore() as IUserGlobalStore;
-  const pathname = usePathname();
-  const isAuthRoute = pathname.includes("/sign");
+
+  const [loading, setLoading] = useState(true);
 
   const getCurrentUser = async () => {
     try {
       setLoading(true);
       const { success, data } = await getCurrentUserFromMongoDB();
-      if (success) {
-        setCurrentUserData(data);
-      } else {
-        throw new Error("An error occurred while fetching user data");
+      if (success) setCurrentUserData(data);
+      else {
+        throw new Error("An error occured");
       }
     } catch (error: any) {
       message.error(error.message);
@@ -34,22 +32,20 @@ function LayOutProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    if (!isAuthRoute && !currentUserData) {
-      getCurrentUser();
-    }
-  }, [pathname]);
+    if (!isAuthRoute && !currentUserData) getCurrentUser();
+  }, [pathName]);
 
-  if (isAuthRoute) {
-    return children;
-  }
+  const isAuthRoute = pathName.includes("/sign");
 
-  if (loading) {
+  if (isAuthRoute) return children;
+
+  if (loading)
     return (
       <div className="flex justify-center items-center h-screen">
-        <Spinner />;
+        <Spinner />
       </div>
     );
-  }
+
   return (
     <div>
       <Header />

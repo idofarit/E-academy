@@ -4,16 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-}
-
 body {
   font-weight: 500;
 }
@@ -101,8 +91,8 @@ body {
 
 /* independent css */
 .section-bg {
-  padding: 1.5rem;
-  border-radius: 25px;
+  padding: 2.2rem 2rem;
+  border-radius: 50px;
   background: #29b6e0;
   box-shadow: 20px 20px 60px #239bbe, -20px -20px 60px #2fd1ff;
 }
@@ -171,6 +161,7 @@ table {
   border-radius: 25px !important;
   background: linear-gradient(145deg, #48c8ef, #3ca8c9);
   box-shadow: 5px 5px 10px #399fbe, -10px -10px 55px #3ca8c9;
+  /* box-shadow: 20px 20px 60px #399fbe, -20px -20px 60px #4dd7ff; */
 }
 .ant-collapse-content-active {
   background-color: #399fbe !important;

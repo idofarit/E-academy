@@ -12,7 +12,7 @@ function CourseCurriculum({ course }: { course: ICourse }) {
         <Collapse>
           {course.sections.map((section, sectionIndex) => (
             <CollapsePanel header={section.name} key={sectionIndex.toString()}>
-              <div className="flex flex-col gap-4 ">
+              <div className="flex flex-col gap-4">
                 {section.lessons.map((lesson: any, lessonIndex: number) => (
                   <div key={lessonIndex} className="text-sm">
                     {lessonIndex + 1} : {lesson.name}

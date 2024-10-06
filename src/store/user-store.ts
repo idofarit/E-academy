@@ -1,6 +1,5 @@
-import { IUser } from "@/interfaces";
 import { create } from "zustand";
-
+import { IUser } from "@/interfaces";
 const usersGlobalStore = create((set) => ({
   currentUserData: null,
   setCurrentUserData: (data: IUser) => set({ currentUserData: data }),
