@@ -1,6 +1,6 @@
 import usersGlobalStore, { IUserGlobalStore } from "@/store/user-store";
-import { useAuth, useClerk } from "@clerk/nextjs";
-import { Button, message } from "antd";
+import { useClerk } from "@clerk/nextjs";
+import { App, Button } from "antd";
 import {
   BookOpenText,
   BookPlus,
@@ -20,6 +20,8 @@ function MenuItems({
 }: {
   setShowSideBar: (value: boolean) => void;
 }) {
+  const { message } = App.useApp();
+
   const pathName = usePathname();
 
   const [loading, setLoading] = useState(false);
@@ -91,10 +93,11 @@ function MenuItems({
   const onLogOut = async () => {
     try {
       setLoading(true);
-      await signOut({ redirectUrl: "/sign-in" });
-      message.success("LoggedOut successfully");
-    } catch (error: any) {
-      message.error("Failed to Logout");
+      await signOut();
+      message.success("Logged out successfully");
+      router.push("/sign-in");
+    } catch (error) {
+      message.error("Failed to logout");
     } finally {
       setShowSideBar(false);
       setLoading(false);
